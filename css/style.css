@@ -29,11 +29,73 @@ header {
     justify-content: space-between;
 }
 .menu-button{
-    background-color: yellow;
+    background-color: transparent;
     border: none;
     width: 48px;
     height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.menu-icon, .menu-icon::before, .menu-icon::after{
+    background-color: var(--HEADER-COLOR);
+    width: 40px;
+    height: 5px;
+    position: absolute;
+    transition: all 0.2s;
+    content: "";
+}
+.menu-icon::before{
+    transform: translate(-20px, -12px);
+}
+.menu-icon::after{
+    transform: translate(-20px, 12px);
+}
+:is(header:hover, header:focus-within) .menu-icon{
+    transform: rotate(990deg);
+    transition: all 1s;
+}
+
+nav{
+    display: none;
+    transform-origin: top center;
+    animation: showMenu .6s ease;
+}
+:is(header:hover, header:focus-within) nav{
+    display: block;
+}
+@keyframes showMenu{
+    0%{
+        transform: scaleY(0);
+    }
+    50%{
+        transform: scaleY(1.2);
+    }
+    100%{
+        transform: scaleY(1);
+    }
+}
+nav ul{
+    list-style-type: none;
+    display: flex;
+    flex-flow: column nowrap;
+}
+nav li{
+    padding: 0.5rem;
+    border-top: 1px solid var(--HEADER-COLOR);
+}
+nav a{
+    display: block;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+nav a:any-link{
+    color: var(--HEADER-COLOR);
+    font-weight: bolder;
+    text-decoration: none;
+}
+nav a:hover, nav a:focus{
+    transform: scale(1.2);
+    transition: all 0.2ms;
 }
