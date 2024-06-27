@@ -53,10 +53,11 @@ header {
 }
 :is(header:hover, header:focus-within) .menu-icon{
     transform: rotate(990deg);
-    transition: all 1s;
+    transition: all .5s;
 }
 
 nav{
+    background-color: var(--HEADER-BGCOLOR);
     display: none;
     transform-origin: top center;
     animation: showMenu .6s ease;
